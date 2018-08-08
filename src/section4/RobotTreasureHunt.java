@@ -34,7 +34,7 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 
 	private void turnRight() throws InterruptedException{
 		// 5. make the robot turn to the right (use setAngle(angle) and microMove(distance))
-		yeet.setAngle(90); yeet.microMove(5);
+		yeet.setAngle(90); yeet.microMove(10);
 	}
 
 	private void spaceBarWasPressed() {
@@ -47,14 +47,24 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 		 System.out.println(robotXLocation + " "+ robotYLocation);
 		// 7. If robot is at same location as the little girl
 		//      --make a pop-up tell the robot where to go next
-		
+		 if(robotXLocation==720 && robotYLocation==405) {
+		JOptionPane.showMessageDialog(null, "you need to go to the boys left shoe"  );}
 		// 8. Give the user subsequent clues at different locations on the image
 		// (pirate robot, swamp, parrots, etc.)
-		
+		if(robotXLocation==195 && robotYLocation==455) {
+			JOptionPane.showMessageDialog(null, "Go and find the highest coconut");
+		}
+		if(robotXLocation==550 && robotYLocation==270) {
+			JOptionPane.showMessageDialog(null, "Go and claim your prise at the picture house!");
+		}
+		if(robotXLocation==265 && robotYLocation== 370) {
+			treasureFound();
+		}
+		}
 		// 9.  If the robot is in the final location
 		//     --call the treasureFound() method
 		
-	}
+	
 
 	private void go() {
 		KeyboardFocusManager.getCurrentKeyboardFocusManager().addKeyEventDispatcher(this);
@@ -99,7 +109,7 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 	
 	static void treasureFound() {
 		try {
-			URI uri = new URI("https://www.youtube.com/watch?v=G0aIg4N6aro");
+			URI uri = new URI("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 			java.awt.Desktop.getDesktop().browse(uri);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -111,3 +121,4 @@ public class RobotTreasureHunt implements KeyEventDispatcher{
 		new RobotTreasureHunt().go();
 	}
 }
+
